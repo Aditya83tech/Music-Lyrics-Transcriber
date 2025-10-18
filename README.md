@@ -32,8 +32,8 @@ Outputs ready-to-download **TXT**, **SRT**, and **LRC** lyric files.
 
 ## 📦 Installation
 ```bash
-git clone https://github.com/yourname/youtube-lyrics-transcriber.git
-cd youtube-lyrics-transcriber
+git clone https://github.com/Aditya83tech/Music-Lyrics-Transcriber.git
+cd music-lyrics-transcriber
 
 python -m venv .venv
 # Windows: .venv\Scripts\activate
