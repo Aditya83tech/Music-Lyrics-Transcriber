@@ -16,7 +16,7 @@ Outputs ready-to-download **TXT**, **SRT**, and **LRC** lyric files.
 - Adjustable model size & precision  
 - Music-friendly decoding (no VAD by default, low no-speech threshold)  
 - Export `.txt`, `.srt`, `.lrc`  
-- Dark Streamlit theme  
+
 
 ---
 
