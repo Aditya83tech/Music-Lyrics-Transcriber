@@ -34,6 +34,7 @@ with st.expander("⚙️ Settings", expanded=True):
         "No-speech threshold (lower = less likely to stop early)",
         0.0, 1.0, 0.2, 0.05
     )
+    
 
 
 url = st.text_input(
@@ -88,6 +89,15 @@ if go:
     full_text = segments_to_plaintext(segments)
     st.text_area("Lyrics (plain text)", value=full_text, height=250)
 
+    translate_to = st.selectbox("Translate lyrics to", ["none","en","hi","es","fr"], index=0)
+
+    if translate_to != "none":
+        from transcriber.translate import translate_text
+    with st.spinner("Translating lyrics…"):
+        translated_text = translate_text(full_text, target_lang=translate_to)
+    st.text_area("Translated lyrics", value=translated_text, height=250)
+    st.download_button("⬇️ lyrics_translated.txt", data=translated_text, file_name="lyrics_translated.txt")
+
     df = pd.DataFrame(
         [{"start": round(s["start"], 2), "end": round(s["end"], 2), "text": s["text"].strip()} for s in segments]
     )
@@ -101,6 +111,9 @@ if go:
     st.download_button("⬇️ lyrics.txt", data=full_text, file_name="lyrics.txt")
     st.download_button("⬇️ lyrics.srt", data=srt_str, file_name="lyrics.srt")
     st.download_button("⬇️ lyrics.lrc", data=lrc_str, file_name="lyrics.lrc")
+
+    # 5) Translator
+    
 
 st.markdown(
     """
